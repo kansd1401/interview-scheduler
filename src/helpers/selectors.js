@@ -43,3 +43,21 @@ export function getInterview(state, boy) {
     return null
   }
 }
+
+export function getSpotsForDays(state) {
+  let appointments = []
+  console.log("yoooooooooooooooooooooooooooo")
+  let spot = {};
+  let count = 0;
+  for(let x of state.days){
+    if (x.name){
+      appointments=[...x.appointments]
+    }
+  }
+  for(let x of appointments){
+    if(appointments.interview){
+      count++
+    }
+  }
+  return count
+}
