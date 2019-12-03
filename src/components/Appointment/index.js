@@ -8,6 +8,7 @@ import Error from "./error";
 import Form from "./form";
 import useVisualMode from "../hooks/useVisualMode";
 import "./styles.scss";
+import { create } from "@storybook/theming";
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
@@ -32,7 +33,9 @@ export default function Appointment(props) {
     props.bookInterview(props.id,interview)
       .then(() => {
         transition(SHOW)
-        props.updateSpots(false)
+        if(mode === CREATE){
+          props.updateSpots(false)
+        }
       })
       .catch(()=> transition(ERROR_SAVE,true))
   }
@@ -47,7 +50,7 @@ export default function Appointment(props) {
   }
 
   return (
-    <article className="appointment"><Header time={props.time} />
+    <article data-testid="appointment" className="appointment"><Header time={props.time} />
     {mode === CREATE && <Form 
                 save={save}
                 id = {props.id} 
@@ -89,6 +92,7 @@ export default function Appointment(props) {
                 name={props.interview.student}
                 interviewer = {props.interview.interviewer.id}
                 onCancel={() => back()}
+                editing={true}
                 />}
     {mode === ERROR_SAVE && (
       <Error 
