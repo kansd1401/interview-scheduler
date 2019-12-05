@@ -6,6 +6,7 @@ import {getAppointmentsForDay, getInterview, getInterviewsForDay} from "../helpe
 import useApplicationdata from "./hooks/useApplicationData"
 
 export default function Application(props) {
+  //Grabbing state from a reducer
   const {
     state,
     setDay,
@@ -16,6 +17,7 @@ export default function Application(props) {
   
   const appointmentsForDay = getAppointmentsForDay(state,state.day)
   
+  //Mapping appointmenst for the day selected
   const schedule = appointmentsForDay.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
     return (

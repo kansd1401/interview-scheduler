@@ -6,6 +6,7 @@ export default function Form(props) {
   const [name, setName] = useState(props.name || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
+  //Checks if intervierwer been selected and name isnt empty save calls bookInterview then trasitions to show
   const saved = () =>{
     if(interviewer && name.length){
       props.save(name,interviewer)
@@ -15,7 +16,7 @@ export default function Form(props) {
     }
     setError("Please enter your name and select a interviewer")
   }
-
+ //Checks if name is empty save calls cancelInterview  then trasitions to show
   const cancel = () =>{
     if(!name.length){
       props.onCancel()

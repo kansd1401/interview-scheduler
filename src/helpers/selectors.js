@@ -28,17 +28,14 @@ export function getInterviewsForDay(state, day) {
 
 export function getInterview(state, boy) {
   const interview = boy;
-  
   if(interview){
     for(let i in state.interviewers){
       if(interview.interviewer === state.interviewers[i].id){
         const interviewer = state.interviewers[i]
         return {...interview, interviewer: interviewer}
       } 
-
     }
     return null
-
   }else {
     return null
   }
@@ -46,7 +43,6 @@ export function getInterview(state, boy) {
 
 export function getSpotsForDays(state) {
   let appointments = []
-  console.log("yoooooooooooooooooooooooooooo")
   let spot = {};
   let count = 0;
   for(let x of state.days){
