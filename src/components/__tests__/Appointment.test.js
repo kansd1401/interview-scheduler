@@ -41,7 +41,7 @@ describe("Form", () => {
     /* 3. Click the save button */
     fireEvent.click(getByText("Save")); 
 
-    expect(getByText(/student name cannot be blank/i)).toBeInTheDocument();
+    expect(getByText(/Please enter your name and select a interviewer/i)).toBeInTheDocument();
     expect(save).not.toHaveBeenCalled();
   });
   
@@ -50,22 +50,21 @@ describe("Form", () => {
     const save = jest.fn()
     const onSave = jest.fn();
     /* 2. Render the Form with interviewers, name and the onSave mock function passed as an onSave prop */
-    const { getByText, queryByText } = render(
-      <Form interviewers={interviewers} save ={save} onSave ={onSave} name="Lydia Miller-Jones" />
+    const { getByText, queryByText, debug } = render(
+      <Form interviewers={interviewers} save ={save} onSave ={onSave} name="Lydia Miller-Jones" interviewer={1}/>
     );
     /* 3. Click the save button */
     fireEvent.click(getByText("Save")); 
-
-    expect(queryByText(/student name cannot be blank/i)).toBeNull();
+    expect(queryByText(/Please enter your name and select a interviewer/i)).toBeNull();
     expect(save).toHaveBeenCalledTimes(1);
-    expect(save).toHaveBeenCalledWith("Lydia Miller-Jones", null);
+    expect(save).toHaveBeenCalledWith("Lydia Miller-Jones", 1);
   });
 
   it("submits the name entered by the user", () => {
     const save = jest.fn()
     const onSave = jest.fn();
     const { getByText, getByPlaceholderText } = render(
-      <Form interviewers={interviewers} save={save} onSave={onSave} />
+      <Form interviewers={interviewers} save={save} onSave={onSave} interviewer={1}/>
     );
   
     const input = getByPlaceholderText("Enter Student Name");
@@ -74,19 +73,19 @@ describe("Form", () => {
     fireEvent.click(getByText("Save"));
   
     expect(save).toHaveBeenCalledTimes(1);
-    expect(save).toHaveBeenCalledWith("Lydia Miller-Jones", null);
+    expect(save).toHaveBeenCalledWith("Lydia Miller-Jones", 1);
   });
 
   it("can successfully save after trying to submit an empty student name", () => {
     const save = jest.fn()
     const onSave = jest.fn();
     const { getByText, getByPlaceholderText, queryByText } = render(
-      <Form interviewers={interviewers} save={save} onSave={onSave} />
+      <Form interviewers={interviewers} save={save} onSave={onSave} interviewer={1}/>
     );
   
     fireEvent.click(getByText("Save"));
   
-    expect(getByText(/student name cannot be blank/i)).toBeInTheDocument();
+    expect(getByText(/Please enter your name and select a interviewer/i)).toBeInTheDocument();
     expect(save).not.toHaveBeenCalled();
   
     fireEvent.change(getByPlaceholderText("Enter Student Name"), {
@@ -95,10 +94,10 @@ describe("Form", () => {
   
     fireEvent.click(getByText("Save"));
   
-    expect(queryByText(/student name cannot be blank/i)).toBeNull();
+    expect(queryByText(/Please enter your name and select a interviewer/i)).toBeNull();
   
     expect(save).toHaveBeenCalledTimes(1);
-    expect(save).toHaveBeenCalledWith("Lydia Miller-Jones", null);
+    expect(save).toHaveBeenCalledWith("Lydia Miller-Jones",1);
   });
 
   it("calls onCancel and resets the input field", () => {

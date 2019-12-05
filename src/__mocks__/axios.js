@@ -11,7 +11,7 @@ const fixtures = {
       id: 2,
       name: "Tuesday",
       appointments: [3, 4],
-      interviewers: [3, 4],
+      interviewers: [1,3, 4],
       spots: 1
     }
   ],

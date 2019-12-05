@@ -25,7 +25,7 @@ describe("Form", () => {
   });
 
   it("shows the save error when failing to save an appointment",async () => {
-    const { container, debug} = render(<Application />);
+    const { container} = render(<Application />);
     
     await waitForElement(() => getByText(container,"Archie Cohen")) 
     
