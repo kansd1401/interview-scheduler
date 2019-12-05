@@ -38,4 +38,6 @@ npm run storybook
 - React
 - Storybook
 - Jest
+- Axios
+- Cypress
 - Node 5.10.x or above
