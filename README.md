@@ -34,8 +34,8 @@ npm run storybook
 ```
 ## Dependencies
 
-- Nodemon
-- body-parser
-- chance
-- express
+- Babel
+- React
+- Storybook
+- Jest
 - Node 5.10.x or above
