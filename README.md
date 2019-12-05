@@ -1,5 +1,16 @@
 # Interview Scheduler
 
+Interview Scheduler is a single page app where users can book, edit and cancel interviews with mentors. 
+
+
+## Final Product
+
+!["Screenshot of editing URLs page"](https://github.com/kansd1401/interview-scheduler/blob/master/screenshots/mob_delete.png)
+!["Screenshot of users URLs page"](https://github.com/kansd1401/interview-scheduler/blob/master/screenshots/mob_delete2.png)
+!["Screenshot of adding a new URL page"](https://github.com/kansd1401/interview-scheduler/blob/master/screenshots/full_create.png)
+!["Screenshot of registery page"](https://github.com/kansd1401/interview-scheduler/blob/master/screenshots/full_create2.png)
+!["Screenshot of registery page"](https://github.com/kansd1401/interview-scheduler/blob/master/screenshots/full.png)
+
 ## Setup
 
 Install dependencies with `npm install`.
@@ -21,3 +32,10 @@ npm test
 ```sh
 npm run storybook
 ```
+## Dependencies
+
+- Nodemon
+- body-parser
+- chance
+- express
+- Node 5.10.x or above
